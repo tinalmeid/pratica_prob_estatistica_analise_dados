@@ -32,7 +32,7 @@ jobs:
       # 4. Executa o script de análise de dados da PRF
       - name: "🚀 Executando Análise Estatística"
         run: |
-          source("scripts/analise_prf.R")
+          source("scripts/aulaPratica_U1.R")
         shell: Rscript {0}
 
       # 5. Executa os testes unitários para validar a análise
