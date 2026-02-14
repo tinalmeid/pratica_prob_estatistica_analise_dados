@@ -1,0 +1,49 @@
+name: 📊 Análise PRF 2024 | 🧬 Estatística e Probabilidade Unidade I
+
+# Define quais eventos disparam a execução automática.
+on:
+  push:
+    branches: [ main ] # Em novos commits para a branch main
+  pull_request:
+    branches: [ main ] # Em pull requests para a branch main
+
+jobs:
+  build:
+    # Maquina virtual onde a ação será executada
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Faz o checkout do código para a máquina virtual
+      - name: "📂 Sincronizando Repositório"
+        uses: actions/checkout@v3
+
+      # 2. Configura o ambiente R 4.5.2
+      - name: "⚙️ Configurando Engine R (4.5.2)"
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.5.2' # Minha versão específica do R
+
+      # 3. Gerenciamento e instalação de pacotes necessários
+      - name: "📦 Instalando Bibliotecas (dplyr, ggplot2, scales)"
+        run: |
+          install.packages(c("dplyr", "ggplot2", "scales", "testthat"), repos = "https://cloud.r-project.org/")
+        shell: Rscript {0}
+
+      # 4. Executa o script de análise de dados da PRF
+      - name: "🚀 Executando Análise Estatística"
+        run: |
+          source("scripts/analise_prf.R")
+        shell: Rscript {0}
+
+      # 5. Executa os testes unitários para validar a análise
+      - name: "🧪 Executando Testes Unitários"
+        run: |
+          library(testthat)
+          test_dir("tests")
+        shell: Rscript {0}
+
+      # 6. Salva os resultados (Gráficos) como artefatos de build
+      - name: "🖼️ Salvando Resultados (Gráficos)"
+        uses: actions/upload-artifact@v3
+        with:
+          name: "Relatorio_Visual_PRF"
+          path: grafico_uf.png

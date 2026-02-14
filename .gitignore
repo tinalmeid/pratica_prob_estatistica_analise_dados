@@ -1,0 +1,27 @@
+# --- R Específico ---
+.Rhistory
+.RData
+.Ruserdata
+.Rapp.history
+.Rproj.user/
+.lintr_cache/
+
+# --- Python (Radian/Conda) ---
+__pycache__/
+.ipynb_checkpoints/
+
+# --- Testes e Cobertura ---
+.Rproj.user/
+.tst/
+tests/*.html
+tests/*.xml
+
+# --- Artefatos e Outputs ---
+*.png
+*.pdf
+grafico_acidentes_uf.png
+
+# --- Sistema e Editor ---
+.DS_Store
+Thumbs.db
+node_modules/

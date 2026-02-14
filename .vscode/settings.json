@@ -1,0 +1,20 @@
+{
+  "r.rterm.windows": "C:\\Program Files\\R\\R-4.5.2\\bin\\R.exe",
+  "r.rpath.windows": "C:\\Program Files\\R\\R-4.5.2\\bin\\R.exe",
+  "r.rterm.option": [
+    "--no-save",
+    "--no-restore",
+    "--quiet"
+  ],
+  "r.bracketedPaste": true,
+  "r.alwaysUseActiveTerminal": true,
+  "r.plot.useHttpgd": true,
+  "r.lsp.enabled": true,
+  "r.lsp.debug": false,
+  "terminal.integrated.enableImages": true,
+  "r.lsp.diagnostics": true,
+  "r.plot.view": "browser",
+  "editor.formatOnSave": true,
+  "r.test.testLibrary": "testthat",
+  "r.test.testDir": "tests"
+}
