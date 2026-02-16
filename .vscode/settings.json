@@ -11,10 +11,15 @@
   "r.plot.useHttpgd": true,
   "r.lsp.enabled": true,
   "r.lsp.debug": false,
+  "r.lsp.diagnostics": false,
+  "r.lintr.enabled": false,
   "terminal.integrated.enableImages": true,
-  "r.lsp.diagnostics": true,
   "r.plot.view": "browser",
   "editor.formatOnSave": true,
   "r.test.testLibrary": "testthat",
-  "r.test.testDir": "tests"
+  "r.test.testDir": "tests",
+  "kotlin.languageServer.enabled": false,
+  "editor.inlineSuggest.syntaxHighlightingEnabled": false,
+  "terminal.integrated.shellIntegration.enabled": false,
+  "terminal.integrated.shellIntegration.quickFixEnabled": false
 }

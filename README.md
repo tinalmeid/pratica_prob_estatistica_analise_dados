@@ -9,6 +9,15 @@
 
 Este repositório contém a resolução da Aula Prática da Unidade I, focada na análise exploratória e cálculos probabilísticos sobre os dados de acidentes em rodovias federais (PRF) do ano de 2024.
 
+### Perguntas do Roteiro
+
+| # | Pergunta | Módulo Responsável |
+| --- | --- | --- |
+| 1 | Qual foi o estado com o maior número de acidentes? | `mod_geografia.R` |
+| 2 | Qual a probabilidade de um acidente ocorrer em condições climáticas claras? | `mod_casualidade.R` |
+| 3 | Como a fase do dia afeta a ocorrência de acidentes? | `mod_temporal.R` |
+| 4 | Que insights podem ser gerados sobre os tipo de acidentes e suas causas? | `mod_casualidade.R` |
+
 ## 🛠️ Tecnologias Utilizadas
 
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232088FF.svg?style=for-the-badge&logo=github-actions&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![R](https://img.shields.io/badge/r-%23276DC3.svg?style=for-the-badge&logo=r&logoColor=white) ![Testthat](https://img.shields.io/badge/testthat-%23191919.svg?style=for-the-badge&logo=r&logoColor=white) ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
@@ -20,17 +29,45 @@ Este repositório contém a resolução da Aula Prática da Unidade I, focada na
 
 Diferente de projetos que usam SonarCloud, aqui optei por uma abordagem de **Engenharia de Software** aplicada à Ciência de Dados com:
 
-* **Testes Unitários:** Garantia de integridade das colunas e validação de cálculos de Probabilidade
-* **Clean Code & SOLID:** Còdigo modularizado para facilitar a manutenção e legibilidade
+* **Testes Unitários com `testthat`:** Garantia de integridade das colunas e validação das regras de probabilidade (P(S)) = 100%, eventos complementares) e conservação de registros em cada um dos módulos de análise.
+* **Clean Code & SOLID:** Código modularizado para facilitar a manutenção e legibilidade, onde cada módulo possui sua responsabilidade única (análise, gráfico ou teste)
+
+### Cobertura de Testes
+
+| Módulo de Teste | Módulo Testado | Principais Asserts |
+| --- | --- | --- |
+| `tes_geografia.R` | `mod_geografia.R` | WIP |
+| `test_casualidade.R` | `mod_casualidade.R` | WIP |
+| `test_temporal.R` | `mod_temporal.R` | WIP |
+| `test_severidade.R` | `mod_severidade.R` | WIP |
+
+## 📊 Visualizações
+
+Gráficos profissionais com tema escuro customizado (`mod_graficos_tema.R`), gerados `ggplot2`e salvos em PNG (300 DPI)
+
+| Gráfico | Arquivo | Descrição |
+| --- | --- | --- |
+| WIP | WIP | WIP |
 
 ## 📂 Estrutura do Repositório
 
-* `/data`: Contém o dataset `datatran2024.csv`.
-* `/scripts`: Script principal `Aula_Pratica_U1.R` e funções auxiliares
 * `/.github`: Configuração do pipeline de automação
-* `/test`: Testes unitários das funções
+* `/data`: Contém o dataset `datatran2024.csv`.
+* `/scripts`: Script principal `main.R` , módulos de análises (`mod_casualidade.R`, `mod_geografia.R`, `mod_severidade.R`, `mod_temporal.R`) e módulos de geração de gráficos (`mod_graficos_tema.R`, WIP, WIP, WIP, WIP)
+* `/test`: Testes unitários das funções (`test_casualidade.R`, `test_geografia.R`, `test_severidade.R`, `test_temporal.R`)
+* `/graficos`: PNGs gerados em tema escuro customizado e 300 DPI
 
 ---
+
+### Fluxo de Execução
+
+```text
+main.R
+    ├── 1. data_preparation.R            -> Carrega e limpa o csv
+    ├── 2. Módulos de análises (4x)      -> Calcula probabilidades e métricas
+    ├── 3. Módulos de teste (4x)         -> Valida as regras antes de prosseguir
+    └── 4. Módulos de gráficos (4x)      -> Gera visualizações em PNG
+```
 
 ## 🏃🏾‍♀️ Pace de Evolução
 
