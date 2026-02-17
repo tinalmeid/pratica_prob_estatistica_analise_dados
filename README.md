@@ -36,10 +36,11 @@ Diferente de projetos que usam SonarCloud, aqui optei por uma abordagem de **Eng
 
 | Módulo de Teste | Módulo Testado | Principais Asserts |
 | --- | --- | --- |
-| `tes_geografia.R` | `mod_geografia.R` | WIP |
-| `test_casualidade.R` | `mod_casualidade.R` | WIP |
-| `test_temporal.R` | `mod_temporal.R` | WIP |
-| `test_severidade.R` | `mod_severidade.R` | WIP |
+| `test_data_preparation.R` | `mod_data_preparation.R` | Valida o ETL, a ingestão de CSV e a integridade do df. |
+| `test_casualidade.R` | `mod_casualidade.R` | Valida a lógica de ranking e a agregação de acidentes por município. |
+| `test_geografia.R` | `mod_geografia.R` | Valida os cálculos de média/mediana e os benchmarks nacionais. |
+| `test_severidade.R` | `mod_severidade.R` | Valida os cálculos de probabilidade e a categorização temporal. |
+| `test_temporal.R` | `mod_temporal.R` | Valida as métricas de causalidade e a análise de fatores. |
 
 ## 📊 Visualizações
 
