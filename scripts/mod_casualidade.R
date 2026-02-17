@@ -10,10 +10,9 @@
 #' @date Fevereiro 2026
 
 # --- CONFIGURAÇÃO INICIAL ---
-#Configuração para usar R no VS Code
-options(radian.enabled = TRUE)
+options(radian.enabled = TRUE) # Configurar para usar R no VS Code
 options(OutDec = ",", big.mark = ".") # Exibir "," como separador decimal e "." como separador de milhar
-options("repos" = c(CRAN = "https://cloud.r-project.org/"))
+options("repos" = c(CRAN = "https://cloud.r-project.org/")) # Definir o repositório padrão do CRAN para instalação de pacotes
 
 #' @description Função para identificar as principais causas e tipos de acidentes
 #' @param df_casualidade Data frame contendo os dados tratados no 'data_preparation.R'

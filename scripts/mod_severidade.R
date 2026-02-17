@@ -10,9 +10,9 @@
 #' @date Fevereiro 2026
 
 # --- CONFIGURAÇÃO INICIAL ---
-#Configuração para usar R no VS Code
+options(radian.enabled = TRUE) # Configurar para usar R no VS Code
 options(OutDec = ",", big.mark = ".") # Exibir "," como separador decimal e "." como separador de milhar
-options("repos" = c(CRAN = "https://cloud.r-project.org/"))
+options("repos" = c(CRAN = "https://cloud.r-project.org/")) # Definir o repositório padrão do CRAN para instalação de pacotes
 
 #' @description Função para calcular métricas de severidade dos acidentes
 #' @param df_severidade Data frame contendo os dados tratados no 'data_preparation.R'
@@ -42,14 +42,16 @@ analisar_severidade <- function(df_severidade) {
     group_by(uf) |>
     summarise(
         media_feridos = mean(feridos, na.rm = TRUE),
+        mediana_feridos = median(feridos, na.rm = TRUE),
         total_feridos = dplyr::n(),
         .groups = "drop"
     ) |>
     mutate(
         # Criar a coluna com status de severidade em relação à nacional
-        referencia_nacional = media_nacional,
+        referencia_media_nacional = media_nacional,
+        referencia_mediana_nacional = mediana_nacional,
         status = ifelse(
-            media_feridos > referencia_nacional,
+            media_feridos > referencia_media_nacional,
             "Acima da Média Nacional",
             "Abaixo da Média Nacional"
         )
@@ -58,6 +60,8 @@ analisar_severidade <- function(df_severidade) {
 
   cat("************************************************************************\n")
   cat("Média nacional de feridos é:", round(media_nacional, 3), "\n")
+  cat("\n")
+  cat("Mediana nacional de feridos é:", round(mediana_nacional, 3), "\n")
   cat("\n")
 
   cat("As 5 primeiras UFs com média de feridos maior que a média nacional:\n")

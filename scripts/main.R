@@ -9,10 +9,9 @@
 #' @date Fevereiro 2026
 
 # --- CONFIGURAÇÃO INICIAL ---
-#Configuração para usar R no VS Code
-options(radian.enabled = TRUE)
+options(radian.enabled = TRUE) # Configurar para usar R no VS Code
 options(OutDec = ",", big.mark = ".") # Exibir "," como separador decimal e "." como separador de milhar
-options("repos" = c(CRAN = "https://cloud.r-project.org/"))
+options("repos" = c(CRAN = "https://cloud.r-project.org/")) # Definir o repositório padrão do CRAN para instalação de pacotes
 
 # Carregar pacotes necessários
 library(testthat)
@@ -37,12 +36,6 @@ source("scripts/mod_severidade.R")
 # Carregar o módulo de análise de temporalidade
 source("scripts/mod_temporal.R")
 
-# --- IMPORTAÇÃO DE MÓDULOS DE TESTES
-# WIP
-#
-#
-#
-
 # --- IMPORTAÇÃO DE MÓDULOS DE GRÁFICOS
 #  WIP
 #
@@ -61,11 +54,6 @@ analises_causalidade <- analisar_casualidade(df_detran_prf2024)
 analises_geografia <- analisar_geografia(df_detran_prf2024)
 analises_severidade <- analisar_severidade(df_detran_prf2024)
 analises_temporalidade <- analisar_temporal(df_detran_prf2024)
-# 2. Validar os resultados das análises com testes unitários
-# WIP
-#
-#
-#
 
 # --- GERAÇÃO DOS GRÁFICOS DAS ANÁLISES ---
 cat("************************************************************************\n")

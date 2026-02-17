@@ -12,10 +12,9 @@
 #' @date Fevereiro 2026
 
 # --- CONFIGURAÇÃO INICIAL ---
-#Configuração para usar R no VS Code
-options(options(radian.enabled = TRUE))
+options(radian.enabled = TRUE) # Configurar para usar R no VS Code
 options(OutDec = ",", big.mark = ".") # Exibir "," como separador decimal e "." como separador de milhar
-options("repos" = c(CRAN = "https://cloud.r-project.org/"))
+options("repos" = c(CRAN = "https://cloud.r-project.org/")) # Definir o repositório padrão do CRAN para instalação de pacotes
 
 #' @description Função para análise temporal dos acidentes da PRF 2024
 #' @param df_temporal Data frame contendo os dados tratados no 'data_preparation.R'
@@ -177,6 +176,5 @@ analisar_temporal <- function(df_temporal) {
 
 # log
 message("Módulo 'mod_temporal.R' carregado com sucesso.")
-cat("\n")
 
 # Fim do arquivo mod_temporal.R
