@@ -9,10 +9,9 @@
 #' @date Fevereiro 2026
 
 # --- CONFIGURAÇÃO INICIAL ---
-#Configuração para usar R no VS Code
-options(radian.enabled = TRUE)
+options(radian.enabled = TRUE) # Configurar para usar R no VS Code
 options(OutDec = ",", big.mark = ".") # Exibir "," como separador decimal e "." como separador de milhar
-options("repos" = c(CRAN = "https://cloud.r-project.org/"))
+options("repos" = c(CRAN = "https://cloud.r-project.org/")) # Definir o repositório padrão do CRAN para instalação de pacotes
 
 # Caminho para os dados
 cat("************************************************************************\n")
@@ -31,6 +30,11 @@ caminho_dados <- "data/datatran2024.csv"
 #' def_temp = variável temporária para armazenar dados brutos carregados do CSV
 
 dados_carregados <- function(caminho_dados) {
+  # Verificar se o arquivo existe antes de tentar carregá-lo
+  if (!file.exists(caminho_dados)) {
+    stop(paste("ERRO: O arquivo", caminho_dados, "não foi encontrado. Verifique o caminho e o nome do arquivo."))
+  }
+
   # Carregar os dados, com separador ";"  que é padrão do arquivo
   df_temp <- read.csv(caminho_dados,
                       sep = ";",
@@ -41,11 +45,9 @@ dados_carregados <- function(caminho_dados) {
   # Contagem de linhas para comparar com o total depois de limpar os dados
   total_linhas_brutas <- nrow(df_temp)
 
-  # Verificar os nomes das colunas do data frame carregado
-  cat("========================================================================\n")
-  cat("Nomes das colunas no data frame PRF 2024:\n")
+  # Exibir os nomes das colunas do arquivo carregado para depuração
+  cat("Colunas encontradas no arquivo CSV:\n")
   print(colnames(df_temp))
-  cat("\n")
 
   # Reorganizar as colunas que serão usadas na análise
   col_ordenadas <- c("data_inversa",
@@ -69,6 +71,12 @@ dados_carregados <- function(caminho_dados) {
 
   # Verificar se todas as colunas ordenadas existem no data frame
   colunas_existentes <- col_ordenadas[col_ordenadas %in% colnames(df_temp)]
+
+  # Verificar se todas as colunas necessárias estão presentes no arquivo CSV
+  colunas_faltando <- setdiff(col_ordenadas, colnames(df_temp))
+  if (length(colunas_faltando) > 0) {
+    stop(paste("As seguintes colunas estão ausentes no arquivo CSV:", paste(colunas_faltando, collapse = ", ")))
+  }
 
   # Selecionar e reorganizar as colunas na ordem definida
   df_temp <- df_temp |> select(all_of(colunas_existentes))
